@@ -1,0 +1,24 @@
+{
+  "name": "tairai_autotests",
+  "version": "1.0.0",
+  "description": "Automated testing Tairai",
+  "main": "index.js",
+  "scripts": {
+    "test:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+    "test:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
+    "test:webkit": "playwright test --config=playwright.config.ts --project=Webkit",
+    "test:all": "playwright test --config=e2e.config.ts --project=Webkit --project=Firefox --project=Chromium ",
+    "test:ui": "playwright test --config=e2e.config.ts --ui",
+    "test:e2e": "playwright test --config=e2e.config.ts --project=Chromium"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "^1.42.0",
+    "dotenv": "^16.4.5",
+    "prettier": "^3.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.28"
+  }
+}
