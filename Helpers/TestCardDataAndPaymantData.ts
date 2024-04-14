@@ -1,8 +1,5 @@
 import { expect, Locator, Page } from '@playwright/test'
-import {email} from './UserData'
-
-export const successPayment = 'btn-secondary'
-export const wrongPayment = 'btn-warning'
+import {Data} from './ChangingData'
 
 export class Payment{
   readonly page:Page
@@ -21,9 +18,16 @@ export class Payment{
 
   readonly successPaymentText:Locator
 
+  successPayment = 'btn-secondary'
+
+  wrongPayment = 'btn-warning'
+
+  data:Data
+
   constructor(page:Page) {
     this.page = page
-    this.emailValue = email
+    this.data = new Data()
+    this.emailValue = this.data.email
     this.cardNumberValue = '4300000000000777'
     this.validToValue = '1124'
     this.cvcValue = '111'
@@ -43,14 +47,9 @@ export class Payment{
     await this.page.fill("[name='CardHolder']",this.cardHolderValue)
   }
 
-  async successPurchase(){
+  async typeOfPurchase(purchaseType:string){
     await this.submitButton.click()
-    await this.page.click('.btn.'+successPayment+'.dialogButton')
-  }
-
-  async wrongPurchase(){
-    await this.submitButton.click()
-    await this.page.click('.btn.'+wrongPayment+'.dialogButton')
+    await this.page.click('.btn.'+purchaseType+'.dialogButton')
   }
 
   async checkSuccessPurchase(textOfSuccessPurchase:string){

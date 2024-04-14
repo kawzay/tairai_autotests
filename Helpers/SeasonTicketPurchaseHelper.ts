@@ -1,7 +1,5 @@
 import { Locator, Page, test } from '@playwright/test'
-import {name,email,phoneWithout7and8} from './UserData'
-
-export const hoursOfSeasonTicket = [3,6,18]
+import {Data} from './ChangingData'
 
 export class SeasonTicket{
   readonly page:Page
@@ -26,7 +24,7 @@ export class SeasonTicket{
     await this.seasonTicketPage.click()
 }
 
-  async selectHours(hour:number){
+  async selectHours(hour:number,hoursOfSeasonTicket:number){
     if(hour === 3){
       await this.page.click('text ='+hoursOfSeasonTicket[0]+' часа')
     } else if(hour === 6){
@@ -36,9 +34,9 @@ export class SeasonTicket{
     }
   }
 
-  async fillData(){
+  async fillData(name:string,phone:string,email:string){
     await this.page.getByPlaceholder(this.namePlaceholder).fill(name)
-    await this.page.getByPlaceholder(this.phonePlaceholder).fill(phoneWithout7and8)
+    await this.page.getByPlaceholder(this.phonePlaceholder).fill(phone)
     await this.page.getByPlaceholder(this.emailPlaceholder).fill(email)
   }
 

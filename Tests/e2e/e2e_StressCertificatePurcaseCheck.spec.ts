@@ -2,52 +2,50 @@ import {test, expect} from '@playwright/test'
 import { baseAuth } from '../../Helpers/BasicCheckHelpers'
 import {Payment} from '../../Helpers/TestCardDataAndPaymantData'
 import {Support} from '../../Helpers/SupportHelpers'
-import {
-  certificatePageOpen, certificatePageHasText, certificateType, electronicCertificateTypeSelect,
-  physicalCertificateTypeSelect, certificateVariation, onSumCertificateSelect, onServiceCertificateSelect,
-  inputSumOfPhysicalCertificate, enteringUserData,clickCheckboxAndGoToPayment,submitCertificateButtonClick,
-  checkPrice,chooseProposedSum,chooseService,textOfSuccessPurchaseOfCert
-} from '../../Helpers/CertificatePurchaseHelpers'
+import {CertificatePage} from '../../Helpers/CertificatePurchaseHelpers'
+import { Data } from '../../Helpers/ChangingData'
 
 test.describe.parallel('Stress Certificate Purchase', () => {
   let payment: Payment
   let support: Support
+  let certificatePage:CertificatePage
+  let data:Data
 
   test.beforeEach(async ({ page }) => {
     payment = new Payment(page)
     support = new Support(page)
+    certificatePage = new CertificatePage(page)
+    data = new Data()
 
     await baseAuth(page)
-
     await support.doNotChooseAnotherCity()
-
-    await certificatePageOpen(page)
+    await certificatePage.open()
   })
   for (let i = 0; i < 100; i++) {
     test("Positive electronic certificate for the service " +i, async ({ page }) => {
       await support.waitSelector('.cart__order-types')
 
-      await certificateType(page, electronicCertificateTypeSelect)
+      await certificatePage.selectCertificateType(data.electronicCertificateTypeSelect)
 
-      await certificateVariation(page, onServiceCertificateSelect)
+      await certificatePage.selectCertificateVariation(data.onServiceCertificateSelect)
 
-      await chooseService(page, 1)
+      await certificatePage.chooseService(data.numberOfService)
 
-      await submitCertificateButtonClick(page)
+      await certificatePage.submitCertificateButton()
 
-      await checkPrice(page, '4490') // like choose service
+      await certificatePage.checkPrice(data.priceOfService) // look at chooseProposeService
 
-      await enteringUserData(page)
+      await certificatePage.enteringUserData(data.name,data.email,data.phoneWithout7and8)
 
-      await clickCheckboxAndGoToPayment(page)
+      await certificatePage.clickCheckboxAndGoToPayment()
 
       await payment.testCardDataOfRobokassaPaste()
 
-      await payment.successPurchase()
+      await payment.typeOfPurchase(payment.successPayment)
 
       await support.waitSelector('.success-page__title')
 
-      await payment.checkSuccessPurchase(textOfSuccessPurchaseOfCert)
+      await payment.checkSuccessPurchase(data.textOfSuccessPurchaseOfCert)
     })
   }
 })
