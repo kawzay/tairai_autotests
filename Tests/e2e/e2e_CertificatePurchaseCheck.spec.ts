@@ -13,32 +13,32 @@ test.describe.parallel('Certificate Purchase', () => {
     let data: Data
 
 
-  async function prepareCertificatePage(page:Page, certificateType, certificateVariation) {
-    await certificatePage.selectCertificateType(certificateType);
-    await certificatePage.selectCertificateVariation(certificateVariation);
-  }
+    async function prepareCertificatePage(page:Page, certificateType, certificateVariation) {
+      await certificatePage.selectCertificateType(certificateType);
+      await certificatePage.selectCertificateVariation(certificateVariation);
+    }
 
-  async function finalizePurchase(page, data) {
-    await certificatePage.enteringUserData(data.name, data.email, data.phoneWithout7and8);
-    await certificatePage.clickCheckboxAndGoToPayment();
-    await payment.testCardDataOfRobokassaPaste();
-    await payment.typeOfPurchase(payment.successPayment);
-    await support.waitSelector('.success-page__title');
-    await payment.checkSuccessPurchase(data.textOfSuccessPurchaseOfCert);
-  }
+    async function finalizePurchase(page, data) {
+      await certificatePage.enteringUserData(data.name, data.email, data.phoneWithout7and8);
+      await certificatePage.clickCheckboxAndGoToPayment();
+      await payment.testCardDataOfRobokassaPaste();
+      await payment.typeOfPurchase(payment.successPayment);
+      await support.waitSelector('.success-page__title');
+      await payment.checkSuccessPurchase(data.textOfSuccessPurchaseOfCert);
+    }
 
-    test.beforeEach(async ({ page }) => {
-      payment = new Payment(page)
-      support = new Support(page)
-      certificatePage = new CertificatePage(page)
-      data = new Data()
+  test.beforeEach(async ({ page }) => {
+    payment = new Payment(page)
+    support = new Support(page)
+    certificatePage = new CertificatePage(page)
+    data = new Data()
 
-      await baseAuth(page)
+    await baseAuth(page)
 
-      await support.doNotChooseAnotherCity()
+    await support.doNotChooseAnotherCity()
 
-      await certificatePage.open()
-    })
+    await certificatePage.open()
+  })
 
   test.afterEach(async ({ page }) =>{
     await finalizePurchase(page,data)
