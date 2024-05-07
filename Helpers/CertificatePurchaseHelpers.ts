@@ -10,8 +10,7 @@ export class CertificatePage{
   }
 
   async open(){
-    const optionsLink = await this.page.$$('.header-desktop__options-link')
-    await optionsLink[1].click()
+    await this.page.click('.header-desktop__options > a:nth-child(2)')
   }
 
   async hasText(titleText: string) {

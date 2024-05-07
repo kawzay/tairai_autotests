@@ -1,5 +1,5 @@
 import {test } from '@playwright/test'
-import { baseAuth, checkPagesContent } from '../../Helpers/BasicCheckHelpers'
+import { baseAuth, checkPagesContent, putBaseAuth } from '../../Helpers/BasicCheckHelpers'
 import {Payment} from '../../Helpers/TestCardDataAndPaymantData'
 import { Support } from '../../Helpers/SupportHelpers'
 import {Data} from '../../Helpers/ChangingData'
@@ -25,7 +25,7 @@ test.describe.parallel('Season Ticket Positive Scenario',() => {
 
       await checkPagesContent(page, 'Абонементы')
 
-      await seasonTicket.selectHours(hour, data.hoursOfSeasonTicket[hour])
+      await seasonTicket.selectHours(hour, hour)
 
       await seasonTicket.fillData(data.name, data.phoneWithout7and8, data.email)
 
@@ -33,6 +33,9 @@ test.describe.parallel('Season Ticket Positive Scenario',() => {
 
       await payment.testCardDataOfRobokassaPaste()
       await payment.typeOfPurchase(payment.successPayment)
+
+      await putBaseAuth(page)
+
       await support.waitSelector('.success-page__title')
       await payment.checkSuccessPurchase(' Абонемент успешно пополнен на '+hour+' ч и привязан к номеру телефона +7'+ data.phoneWithout7and8)
     })

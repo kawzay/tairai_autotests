@@ -1,3 +1,4 @@
+import { readFileSync } from 'fs';
 
 export class Data{
   name:string = 'Daniil'
@@ -20,4 +21,11 @@ export class Data{
 
 
   hoursOfSeasonTicket:number[] = [3,6,18]
+
+  numberOfCert=''
+  codeOfCert=''
+
+  priceOf1HourOilMassage = '4490'
+  priceOf1_5HourOilMassage = '6290'
+  priceOf2HourOilMassage = '7990'
 }

@@ -3,24 +3,18 @@ import {Data} from './ChangingData'
 
 export class Payment{
   readonly page:Page
-
   readonly emailValue:string
-
   readonly cardNumberValue:string
-
   readonly validToValue:string
-
   readonly cvcValue:string
-
   readonly cardHolderValue:string
-
   readonly submitButton:Locator
-
   readonly successPaymentText:Locator
-
   successPayment = 'btn-secondary'
-
   wrongPayment = 'btn-warning'
+  cash:string = 'cash'
+  seasonTicket:string = 'seasonTicket'
+  certificate:string = 'certificate'
 
   data:Data
 
@@ -53,6 +47,7 @@ export class Payment{
   }
 
   async checkSuccessPurchase(textOfSuccessPurchase:string){
+
     await expect(this.successPaymentText).toContainText(textOfSuccessPurchase)
   }
 }

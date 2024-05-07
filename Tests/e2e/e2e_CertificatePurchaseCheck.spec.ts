@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test'
-import { baseAuth } from '../../Helpers/BasicCheckHelpers'
+import { baseAuth, putBaseAuth } from '../../Helpers/BasicCheckHelpers'
 import {Payment} from '../../Helpers/TestCardDataAndPaymantData'
 import {Support} from '../../Helpers/SupportHelpers'
 import {CertificatePage} from '../../Helpers/CertificatePurchaseHelpers'
@@ -23,6 +23,8 @@ test.describe.parallel('Certificate Purchase', () => {
       await certificatePage.clickCheckboxAndGoToPayment();
       await payment.testCardDataOfRobokassaPaste();
       await payment.typeOfPurchase(payment.successPayment);
+
+      await putBaseAuth(page)
       await support.waitSelector('.success-page__title');
       await payment.checkSuccessPurchase(data.textOfSuccessPurchaseOfCert);
     }
@@ -38,15 +40,13 @@ test.describe.parallel('Certificate Purchase', () => {
     await support.doNotChooseAnotherCity()
 
     await certificatePage.open()
+
+    await certificatePage.hasText('Корзина')
   })
 
   test.afterEach(async ({ page }) =>{
     await finalizePurchase(page,data)
   })
-
-    test("Certificate page opening check", async ({ page }) => {
-      await certificatePage.hasText('Корзина')
-    })
 
     test("Positive electronic certificate for the amount to be entered", async ({ page }) => {
       await support.waitSelector('.cart__order-types')

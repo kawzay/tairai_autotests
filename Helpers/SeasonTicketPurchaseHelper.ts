@@ -1,5 +1,5 @@
-import { Locator, Page, test } from '@playwright/test'
-import {Data} from './ChangingData'
+import { Locator, Page } from '@playwright/test'
+
 
 export class SeasonTicket{
   readonly page:Page
@@ -26,11 +26,11 @@ export class SeasonTicket{
 
   async selectHours(hour:number,hoursOfSeasonTicket:number){
     if(hour === 3){
-      await this.page.click('text ='+hoursOfSeasonTicket[0]+' часа')
+      await this.page.click('text ='+hoursOfSeasonTicket+' часа')
     } else if(hour === 6){
-      await this.page.click('text ='+hoursOfSeasonTicket[1]+' часов')
+      await this.page.click('text ='+hoursOfSeasonTicket+' часов')
     } else if (hour === 18){
-      await this.page.click('text ='+hoursOfSeasonTicket[2]+' часов')
+      await this.page.click('text ='+hoursOfSeasonTicket+' часов')
     }
   }
 
