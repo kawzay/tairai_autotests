@@ -15,7 +15,7 @@ export class CitiesSelectors{
   constructor(page:Page) {
     this.page = page
 
-    this.citiesUrl = 'https://'+username+':'+password+'@'+citiesArray[currentIndex]+'.web-tairai.flagsoft.ru'
+    this.citiesUrl = 'https://'+username+':'+password+'@'+citiesArray[currentIndex]+'.stage-tairai.tairai.com'
     this.citySelector = page.locator('.header-select__current-city-btn')
     this.pageTitle = page.locator('.header-desktop__options')
     this.singUpButtonTextOnCitiesPage = 'Записаться'

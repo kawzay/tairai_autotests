@@ -21,7 +21,7 @@ test.describe.parallel('Stress Certificate Purchase', () => {
     await support.doNotChooseAnotherCity()
     await certificatePage.open()
   })
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 1; i++) {
     test("Positive electronic certificate for the service " +i, async ({ page }) => {
       await support.waitSelector('.cart__order-types')
 

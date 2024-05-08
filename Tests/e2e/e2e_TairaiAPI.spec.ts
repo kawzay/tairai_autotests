@@ -26,11 +26,4 @@ test.describe.parallel('Tairai API tests',() => {
     expect(response.status()).toBe(200)
     expect(responseBody.Visits).toBeTruthy()
   })
-
-  test.only('Tairai API - UploadChanges', async ({ request}) => {
-    const response = await request.get(baseUrl+'/clientsjson/uploadchanges')
-    const responseBody = JSON.parse(await response.text())
-
-    console.log(responseBody)
-  })
 })

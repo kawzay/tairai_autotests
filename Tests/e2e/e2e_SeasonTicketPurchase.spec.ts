@@ -4,6 +4,8 @@ import {Payment} from '../../Helpers/TestCardDataAndPaymantData'
 import { Support } from '../../Helpers/SupportHelpers'
 import {Data} from '../../Helpers/ChangingData'
 import { SeasonTicket} from '../../Helpers/SeasonTicketPurchaseHelper'
+import { OnlineRecording } from '../../Helpers/RecordingHelpers'
+import { CertificatePage } from '../../Helpers/CertificatePurchaseHelpers'
 
 test.describe.parallel('Season Ticket Positive Scenario',() => {
   let payment:Payment
@@ -12,7 +14,10 @@ test.describe.parallel('Season Ticket Positive Scenario',() => {
   let data:Data
 
   data = new Data()
-
+  test.beforeEach(async ({ page }) => {
+    support = new Support(page)
+    await support.timeout(1000)
+  })
   for (const hour of data.hoursOfSeasonTicket){
     test("Season Ticket " +hour+ " Hours Purchase", async ({page})=> {
       payment = new Payment(page)

@@ -67,6 +67,7 @@ export class OnlineRecording{
 
   async selectSeasonTicketPaymentMethod(){
     await this.page.click('text = Оплата абонементом')
+    await timeout(this.page,1000)
     await this.page.click('.checkin-page-payment__confirm-btn')
   }
 
