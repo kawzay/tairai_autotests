@@ -1,0 +1,16 @@
+{
+  "base": {
+    "project": "Tairai Autotest",
+    "environment": "stage",
+    "comment": "com",
+    "reportLink": "",
+    "language": "ru",
+    "allureFolder": "/Users/daniildunajcuk/WebstormProjects/tairai_autotests/allure-report",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "7003372791:AAFhwSyHrSWeveW13fJ3WABlltuPXq6-kl4",
+    "chat": "-1002062522775",
+    "replyTo": ""
+  }
+}

@@ -5,6 +5,7 @@ const playwrightConfig: PlaywrightTestConfig = {
   retries: 0,
   workers:8,
   testDir: "tests/e2e",
+  reporter: "allure-playwright",
   use:{
     headless: true,
     viewport:{width: 1920, height:1080},
@@ -12,6 +13,7 @@ const playwrightConfig: PlaywrightTestConfig = {
     video: 'off',
     screenshot: 'off',
   },
+
   projects: [
     {
       name: "Chromium",
@@ -27,5 +29,7 @@ const playwrightConfig: PlaywrightTestConfig = {
     },
   ],
 }
+
+
 
 export default playwrightConfig

@@ -14,7 +14,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@playwright/test": "^1.42.0",
     "axios": "^1.6.8",
     "dotenv": "^16.4.5",
     "googleapis": "^136.0.0",
@@ -23,7 +22,17 @@
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.44.0",
     "@types/axios": "^0.14.0",
-    "@types/node": "^20.12.10"
+    "@types/node": "^20.12.10",
+    "allure-playwright": "^2.15.1"
+  },
+  "changelog": {
+    "labels": {
+      "other": "New Feature",
+      "fix": "Bug Fix",
+      "refactor": "Refactoring"
+    },
+    "repo": "username/repo"
   }
 }

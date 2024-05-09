@@ -82,6 +82,8 @@ async function selectTimeAndInputData(){
 
 
 test.beforeEach(async ({ page }) => {
+  support = new Support(page)
+  await support.timeout(1000)
   onlineRecording = new OnlineRecording(page)
   payment = new Payment(page)
   seasonTicket = new SeasonTicket(page)
@@ -301,7 +303,7 @@ test.describe('Online Recording Different Payment Type',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test.skip("Online Recording With SeasonTicket", async ({page})=> {
+  test("Online Recording With SeasonTicket", async ({page})=> {
     await seasonTicket.pageOpening()
     await seasonTicket.selectHours(3,3)
     await seasonTicket.fillData(data.name, data.phoneWithout7and8, data.email)
@@ -318,7 +320,7 @@ test.describe('Online Recording Different Payment Type',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test.skip("Online Recording With Certificate", async ({page})=> {
+  test("Online Recording With Certificate", async ({page})=> {
     await certificatePage.open()
     await support.waitSelector('.cart__order-types')
     await certificatePage.selectCertificateType(data.electronicCertificateTypeSelect);
