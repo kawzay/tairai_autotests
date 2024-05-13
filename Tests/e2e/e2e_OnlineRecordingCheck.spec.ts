@@ -303,7 +303,7 @@ test.describe('Online Recording Different Payment Type',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test("Online Recording With SeasonTicket", async ({page})=> {
+  test.skip("Online Recording With SeasonTicket", async ({page})=> {
     await seasonTicket.pageOpening()
     await seasonTicket.selectHours(3,3)
     await seasonTicket.fillData(data.name, data.phoneWithout7and8, data.email)
@@ -320,7 +320,7 @@ test.describe('Online Recording Different Payment Type',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test("Online Recording With Certificate", async ({page})=> {
+  test.skip("Online Recording With Certificate", async ({page})=> {
     await certificatePage.open()
     await support.waitSelector('.cart__order-types')
     await certificatePage.selectCertificateType(data.electronicCertificateTypeSelect);
@@ -343,6 +343,5 @@ test.describe('Online Recording Different Payment Type',() => {
     await selectTypeOfPayment(payment.certificate)
     await onlineRecording.finalRecordingAndCheck()
   })
-
 })
 

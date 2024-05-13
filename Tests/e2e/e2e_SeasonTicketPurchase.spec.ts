@@ -25,22 +25,14 @@ test.describe.parallel('Season Ticket Positive Scenario',() => {
       seasonTicket = new SeasonTicket(page)
 
       await baseAuth(page)
-
       await seasonTicket.pageOpening()
-
       await checkPagesContent(page, 'Абонементы')
-
       await seasonTicket.selectHours(hour, hour)
-
       await seasonTicket.fillData(data.name, data.phoneWithout7and8, data.email)
-
       await seasonTicket.goToPayment()
-
       await payment.testCardDataOfRobokassaPaste()
       await payment.typeOfPurchase(payment.successPayment)
-
       await putBaseAuth(page)
-
       await support.waitSelector('.success-page__title')
       await payment.checkSuccessPurchase(' Абонемент успешно пополнен на '+hour+' ч и привязан к номеру телефона +7'+ data.phoneWithout7and8)
     })
