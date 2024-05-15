@@ -1,4 +1,3 @@
-import { readFileSync } from 'fs';
 
 export class Data{
   name:string = 'Daniil'
@@ -6,7 +5,6 @@ export class Data{
   phoneWithout7and8:string = '9126568079'
 
   electronicCertificateTypeSelect:number = 0
-  physicalCertificateTypeSelect:number = 1
   onSumCertificateSelect:string = 'На сумму'
   inputSum:string = '5000'
 
@@ -21,9 +19,6 @@ export class Data{
 
 
   hoursOfSeasonTicket:number[] = [3,6,18]
-
-  numberOfCert=''
-  codeOfCert=''
 
   priceOf1HourOilMassage = '4490'
   priceOf1_5HourOilMassage = '6290'

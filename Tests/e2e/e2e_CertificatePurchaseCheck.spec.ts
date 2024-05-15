@@ -13,12 +13,12 @@ test.describe.parallel('Certificate Purchase', () => {
     let data: Data
 
 
-    async function prepareCertificatePage(page:Page, certificateType, certificateVariation) {
+    async function prepareCertificatePage(page:Page, certificateType: number, certificateVariation: string) {
       await certificatePage.selectCertificateType(certificateType);
       await certificatePage.selectCertificateVariation(certificateVariation);
     }
 
-    async function finalizePurchase(page, data) {
+    async function finalizePurchase(page: Page, data: Data) {
       await certificatePage.enteringUserData(data.name, data.email, data.phoneWithout7and8);
       await certificatePage.clickCheckboxAndGoToPayment();
       await payment.testCardDataOfRobokassaPaste();
@@ -36,11 +36,8 @@ test.describe.parallel('Certificate Purchase', () => {
     data = new Data()
 
     await baseAuth(page)
-
     await support.doNotChooseAnotherCity()
-
     await certificatePage.open()
-
     await certificatePage.hasText('Корзина')
   })
 

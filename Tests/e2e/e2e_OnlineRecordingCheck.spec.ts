@@ -27,10 +27,10 @@ async function runPythonScript() {
   }
 }
 
-async function loadCertificateData() {
-  const pathToFile = join(__dirname, '../../Helpers/certificate_data.json'); // Указываем путь к файлу
-  const fileContents = readFileSync(pathToFile, 'utf8'); // Читаем содержимое файла
-  return JSON.parse(fileContents); // Преобразуем JSON строку в объект
+export async function loadCertificateData() {
+  const pathToFile = join(__dirname, '../../Helpers/certificate_data.json');
+  const fileContents = readFileSync(pathToFile, 'utf8');
+  return JSON.parse(fileContents);
 }
 
 const roomData = [
@@ -96,67 +96,45 @@ test.beforeEach(async ({ page }) => {
 })
 test.describe('Online Recording For One Person',() => {
   test("Online Recording With 1 Service Without Select Master", async ({page})=> {
-
     await onlineRecording.selectSalon(2)
-
     await selectService(1)
-
     await onlineRecording.checkPrice(data.priceOf1HourOilMassage)
-
     await onlineRecording.goToNextStepAndCheckCountOfService(1)
-
     await selectMaster(0)
-
     await selectTimeAndInputData()
-
     await selectTypeOfPayment(payment.cash)
-
     await onlineRecording.finalRecordingAndCheck()
   })
 
   test("Online Recording With 2 Service", async ({page})=> {
     await onlineRecording.selectSalon(2)
-
     await selectService(1)
     await selectService(2)
-
     await onlineRecording.goToNextStepAndCheckCountOfService(2)
-
     await selectMaster(0)
-
     await selectTimeAndInputData()
-
     await selectTypeOfPayment(payment.cash)
-
     await onlineRecording.finalRecordingAndCheck()
   })
 
   test("Online Recording With 3 Service", async ({page})=> {
     await onlineRecording.selectSalon(2)
-
     await selectService(1)
     await selectService(2)
     await selectService(3)
-
     await onlineRecording.goToNextStepAndCheckCountOfService(3)
-
     await selectMaster(0)
-
     await selectTimeAndInputData()
-
     await selectTypeOfPayment(payment.cash)
-
     await onlineRecording.finalRecordingAndCheck()
   })
 
   test("Online Recording With 4 Service And 4 Hours", async ({page})=> {
     await onlineRecording.selectSalon(2)
-
     await selectService(1)
     await selectService(2)
     await selectService(3)
     await selectService(4)
-
     await onlineRecording.error4Hours()
   })
 
