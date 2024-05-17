@@ -4,6 +4,8 @@ export async function timeout(page: Page,millisecTime:number){
   await page.waitForTimeout(millisecTime)
 }
 
+// тут чет не понял, в конце файла есть метод с таким-же названием но внутри класса Support
+// а этот метод похоже нигде не используется
 export async function doNotChooseAnotherCity(page: Page){
   if(await page.locator('.header-select__tip').isVisible()){
     await page.click('.header-desktop__top .header-select__tip-option-btn--left')

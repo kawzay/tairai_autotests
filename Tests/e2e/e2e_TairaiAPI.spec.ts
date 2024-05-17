@@ -1,10 +1,11 @@
-import {test, expect, BrowserContext} from '@playwright/test';
+import {test, expect} from '@playwright/test';
 import {username,password} from '../../Helpers/AuthorizationData'
 
 const apiUsername = process.env.apiUsername
 const apiPassword = process.env.apiPassword
 let accessToken = '';
 
+// можно типизировать token
 const getHeaders = (token) => ({
   'Authorization': `Bearer ${token}`,
   'Content-Type': 'application/json',
@@ -17,7 +18,7 @@ test.describe.parallel('Tairai API tests 1С',() => {
   test('Tairai API - GetInfoByPhone', async ({ request}) => {
     const response = await request.get(baseUrl+'/clientsjson/getinfobyphone?phone=89126568079')
     const responseBody = JSON.parse(await response.text())
-
+    // responseBody как будто тоже хочется типизировать, но это необязательно
     expect(response.status()).toBe(200)
     expect(responseBody.Type).toBe('Client')
     expect(responseBody.Name).toBe('Даня_тест')
@@ -156,7 +157,7 @@ test.describe('Tairai API tests stage',() => {
       headers: getHeaders(accessToken),
     })
 
-    const responseBody = JSON.parse(await response.text())
+    const responseBody = JSON.parse(await response.text()) // не используется
 
     expect(response.status()).toBe(200);
   })
@@ -167,7 +168,7 @@ test.describe('Tairai API tests stage',() => {
       headers: getHeaders(accessToken),
     })
 
-    const responseBody = JSON.parse(await response.text())
+    const responseBody = JSON.parse(await response.text()) // не используется
 
     expect(response.status()).toBe(200);
   })
@@ -178,6 +179,7 @@ test.describe('Tairai API tests stage',() => {
       headers: getHeaders(accessToken),
     })
 
+    // начиная отсюда дублирование кода в нескольких методах подряд
     const responseBody = JSON.parse(await response.text())
 
     expect(response.status()).toBe(200);
@@ -265,7 +267,7 @@ test.describe('Tairai API tests stage',() => {
       headers: getHeaders(accessToken),
     })
 
-    const responseBody = JSON.parse(await response.text())
+    const responseBody = JSON.parse(await response.text()) // не используется
 
     expect(response.status()).toBe(200);
   })

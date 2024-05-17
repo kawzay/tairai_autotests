@@ -1,11 +1,14 @@
 import {test } from '@playwright/test'
 import { baseAuth, checkPagesContent, putBaseAuth } from '../../Helpers/BasicCheckHelpers'
+// тут немного больно как перфикционисту, что в некоторых местах есть пробелы внутри фигурных скобок,
+// а в некоторых нет, только самому это конечно руками менять это не надо,
+// можно либо линтер настроить либо в идешке нажать комбинацию добавления отступов
+// если она такое поддерживает (option+command+l если мак)
+
 import {Payment} from '../../Helpers/TestCardDataAndPaymantData'
 import { Support } from '../../Helpers/SupportHelpers'
 import {Data} from '../../Helpers/ChangingData'
 import { SeasonTicket} from '../../Helpers/SeasonTicketPurchaseHelper'
-import { OnlineRecording } from '../../Helpers/RecordingHelpers'
-import { CertificatePage } from '../../Helpers/CertificatePurchaseHelpers'
 
 test.describe.parallel('Season Ticket Positive Scenario',() => {
   let payment:Payment

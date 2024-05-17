@@ -1,4 +1,4 @@
-import { test, expect, Page } from '@playwright/test'
+import { test, Page } from '@playwright/test'
 import { baseAuth, putBaseAuth } from '../../Helpers/BasicCheckHelpers'
 import {Payment} from '../../Helpers/TestCardDataAndPaymantData'
 import {Support} from '../../Helpers/SupportHelpers'
@@ -13,6 +13,7 @@ test.describe.parallel('Certificate Purchase', () => {
     let data: Data
 
 
+  // page не используется
     async function prepareCertificatePage(page:Page, certificateType: number, certificateVariation: string) {
       await certificatePage.selectCertificateType(certificateType);
       await certificatePage.selectCertificateVariation(certificateVariation);
@@ -79,5 +80,6 @@ test.describe.parallel('Certificate Purchase', () => {
       await certificatePage.submitCertificateButton()
 
       await certificatePage.checkPrice(data.priceOfService) // look at chooseProposeService
+      // не нашел что за chooseProposeService)))
     })
   })

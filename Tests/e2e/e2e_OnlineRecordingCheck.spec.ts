@@ -1,4 +1,4 @@
-import {test, expect,Page} from '@playwright/test'
+import {test} from '@playwright/test'
 import { baseAuth, putBaseAuth } from '../../Helpers/BasicCheckHelpers'
 import {OnlineRecording} from '../../Helpers/RecordingHelpers'
 import {Data} from '../../Helpers/ChangingData'
@@ -52,7 +52,7 @@ async function selectService(numberOfService:number){
 }
 
 async function selectMaster(numberOfMaster:number){
-  if(numberOfMaster < 1 ){
+  if (numberOfMaster < 1 ){
     await onlineRecording.dontSelectMaster()
   }
   else {
@@ -61,7 +61,7 @@ async function selectMaster(numberOfMaster:number){
 }
 
 async function selectTypeOfPayment(type:string){
-  if(type === 'cash' ){
+  if (type === 'cash' ){
     await onlineRecording.selectCashPaymentMethod()
   }
   else if (type === 'seasonTicket') {
@@ -94,6 +94,10 @@ test.beforeEach(async ({ page }) => {
   await onlineRecording.open()
   await onlineRecording.hasText('Онлайн запись')
 })
+
+// ниже в каждый тест пердается body "async ({page})", но при этом page почти нигде не используется
+// мне кажется можно просто "async ()" писать где page не используется
+
 test.describe('Online Recording For One Person',() => {
   test("Online Recording With 1 Service Without Select Master", async ({page})=> {
     await onlineRecording.selectSalon(2)
@@ -137,6 +141,12 @@ test.describe('Online Recording For One Person',() => {
     await selectService(4)
     await onlineRecording.error4Hours()
   })
+
+  // Где-то есть между некоторыми await пробелы (переносы строки)
+  // где-то их вообще нет, где-то меду каждым.
+  // Это не является какой-то ошибкой или типо того, просто когда это бросается в глаза
+  // начинаешь искать в этом какой-то смысол или логику,
+  // лучше наверное какого-то единого стиля придерживаться
 
   test("Online Recording With 4 Hours Error And Continue", async ({page})=> {
     await onlineRecording.selectSalon(2)

@@ -1,4 +1,4 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { join } from 'path'
 import { readFileSync } from 'fs'
 import {username,password} from '../../Helpers/AuthorizationData'
@@ -8,7 +8,7 @@ const pathToFile = join(__dirname, '../../Helpers/sitemap.json')
 const sitemap = JSON.parse(readFileSync(pathToFile, 'utf8'))
 
 test.describe.parallel('Visual Testing', () => {
-  let support: Support
+  let support: Support // не используется
 
   Object.entries(sitemap).forEach(([key, url], index) => {
     if (index > 0) {
