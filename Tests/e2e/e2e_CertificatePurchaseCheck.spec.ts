@@ -13,12 +13,13 @@ test.describe.parallel('Certificate Purchase', () => {
     let data: Data
 
 
-  // page не используется
+  // todo page не используется
     async function prepareCertificatePage(page:Page, certificateType: number, certificateVariation: string) {
       await certificatePage.selectCertificateType(certificateType);
       await certificatePage.selectCertificateVariation(certificateVariation);
     }
 
+    // todo дублирование и много где нет ";" в конце строки
     async function finalizePurchase(page: Page, data: Data) {
       await certificatePage.enteringUserData(data.name, data.email, data.phoneWithout7and8);
       await certificatePage.clickCheckboxAndGoToPayment();
@@ -80,6 +81,6 @@ test.describe.parallel('Certificate Purchase', () => {
       await certificatePage.submitCertificateButton()
 
       await certificatePage.checkPrice(data.priceOfService) // look at chooseProposeService
-      // не нашел что за chooseProposeService)))
+      // todo не нашел что за chooseProposeService
     })
   })

@@ -95,8 +95,8 @@ test.beforeEach(async ({ page }) => {
   await onlineRecording.hasText('Онлайн запись')
 })
 
-// ниже в каждый тест пердается body "async ({page})", но при этом page почти нигде не используется
-// мне кажется можно просто "async ()" писать где page не используется
+// todo ниже в каждый тест передается body "async ({page})", но при этом page почти нигде не используется
+//  можно просто "async ()" писать где page не используется
 
 test.describe('Online Recording For One Person',() => {
   test("Online Recording With 1 Service Without Select Master", async ({page})=> {
@@ -142,11 +142,11 @@ test.describe('Online Recording For One Person',() => {
     await onlineRecording.error4Hours()
   })
 
-  // Где-то есть между некоторыми await пробелы (переносы строки)
-  // где-то их вообще нет, где-то меду каждым.
-  // Это не является какой-то ошибкой или типо того, просто когда это бросается в глаза
-  // начинаешь искать в этом какой-то смысол или логику,
-  // лучше наверное какого-то единого стиля придерживаться
+  // todo Где-то есть между некоторыми await пробелы (переносы строки)
+  //  где-то их вообще нет, где-то меду каждым.
+  //  Это не является прямо ошибкой, просто когда это бросается в глаза
+  //  начинаешь искать в этом какой-то смысл или логику,
+  //  лучше какого-то единого стиля придерживаться
 
   test("Online Recording With 4 Hours Error And Continue", async ({page})=> {
     await onlineRecording.selectSalon(2)

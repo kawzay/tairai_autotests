@@ -8,8 +8,9 @@ const pathToFile = join(__dirname, '../../Helpers/sitemap.json')
 const sitemap = JSON.parse(readFileSync(pathToFile, 'utf8'))
 
 test.describe.parallel('Visual Testing', () => {
-  let support: Support // не используется
+  let support: Support // todo не используется
 
+  // todo можно Object.values
   Object.entries(sitemap).forEach(([key, url], index) => {
     if (index > 0) {
       test(`Check snapshot ${url}`, async ({ page }) => {

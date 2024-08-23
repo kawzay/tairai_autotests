@@ -21,6 +21,10 @@ test.describe.parallel('Stress Certificate Purchase', () => {
     await support.doNotChooseAnotherCity()
     await certificatePage.open()
   })
+  // todo очень странный for
+  //  я так понял 1 меняется в зависимости от того сколько раз надо прогнать
+  //  тогда надо хотябы в переменную вынести ее чтобы понятно было
+
   for (let i = 0; i < 1; i++) {
     test("Positive electronic certificate for the service " +i, async ({ page }) => {
       await support.waitSelector('.cart__order-types')

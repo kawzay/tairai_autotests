@@ -13,8 +13,8 @@ test.describe('Checking the opening of other cities',() => {
     await citiesSelectors.pageHasSignUpButton()
   })
 
-  // ниже в каждый тест пердается body "async ({page})", но при этом page нигде не используется
-  // мне кажется можно просто "async ()" писать
+  // todo ниже в каждый тест передается body "async ({page})", но при этом page нигде не используется
+  //  мне кажется можно просто "async ()" писать
 
   test("Kaliningrad", async ({page}) => {
     await citiesSelectors.nameOfCityCheck('Калининград')

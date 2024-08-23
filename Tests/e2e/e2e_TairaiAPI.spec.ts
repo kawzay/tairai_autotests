@@ -5,7 +5,7 @@ const apiUsername = process.env.apiUsername
 const apiPassword = process.env.apiPassword
 let accessToken = '';
 
-// можно типизировать token
+// todo можно типизировать token
 const getHeaders = (token) => ({
   'Authorization': `Bearer ${token}`,
   'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ test.describe.parallel('Tairai API tests 1С',() => {
   test('Tairai API - GetInfoByPhone', async ({ request}) => {
     const response = await request.get(baseUrl+'/clientsjson/getinfobyphone?phone=89126568079')
     const responseBody = JSON.parse(await response.text())
-    // responseBody как будто тоже хочется типизировать, но это необязательно
+    // todo responseBody хочется типизировать
     expect(response.status()).toBe(200)
     expect(responseBody.Type).toBe('Client')
     expect(responseBody.Name).toBe('Даня_тест')
@@ -157,7 +157,8 @@ test.describe('Tairai API tests stage',() => {
       headers: getHeaders(accessToken),
     })
 
-    const responseBody = JSON.parse(await response.text()) // не используется
+    // todo responseBody не используется
+    const responseBody = JSON.parse(await response.text())
 
     expect(response.status()).toBe(200);
   })
@@ -168,7 +169,8 @@ test.describe('Tairai API tests stage',() => {
       headers: getHeaders(accessToken),
     })
 
-    const responseBody = JSON.parse(await response.text()) // не используется
+    // todo не используется
+    const responseBody = JSON.parse(await response.text())
 
     expect(response.status()).toBe(200);
   })
@@ -179,7 +181,7 @@ test.describe('Tairai API tests stage',() => {
       headers: getHeaders(accessToken),
     })
 
-    // начиная отсюда дублирование кода в нескольких методах подряд
+    // todo начиная отсюда дублирование кода в нескольких методах подряд
     const responseBody = JSON.parse(await response.text())
 
     expect(response.status()).toBe(200);
