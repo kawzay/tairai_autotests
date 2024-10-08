@@ -76,6 +76,8 @@ export class OnlineRecording{
     await this.page.click('.custom-checkbox__checkbox--rect')
     await this.page.click('.preloader-button__content')
 
+    await this.page.waitForSelector('.checkin-popup__title')
+
     const successRecord = this.page.locator('.checkin-popup__title')
     await expect(successRecord).toContainText('Запись успешно завершена!')
 

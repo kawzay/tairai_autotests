@@ -1,16 +1,16 @@
-import {test, expect,Page} from '@playwright/test'
-import { baseAuth, putBaseAuth } from '../../Helpers/BasicCheckHelpers'
+import {test} from '@playwright/test'
+import {baseAuth, putBaseAuth} from '../../Helpers/BasicCheckHelpers'
 import {OnlineRecording} from '../../Helpers/RecordingHelpers'
 import {Data} from '../../Helpers/ChangingData'
 import {Support} from '../../Helpers/SupportHelpers'
-import { Payment } from '../../Helpers/TestCardDataAndPaymantData'
+import {Payment} from '../../Helpers/TestCardDataAndPaymantData'
 import {SeasonTicket} from '../../Helpers/SeasonTicketPurchaseHelper'
 import {CertificatePage} from '../../Helpers/CertificatePurchaseHelpers'
-import { exec } from 'child_process';
-import { resolve } from 'path'
-import { promisify } from 'util';
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import {exec} from 'child_process';
+import {resolve} from 'path'
+import {promisify} from 'util';
+import {readFileSync} from 'fs';
+import {join} from 'path';
 
 
 const execAsync = promisify(exec);
@@ -52,7 +52,7 @@ async function selectService(numberOfService:number){
 }
 
 async function selectMaster(numberOfMaster:number){
-  if(numberOfMaster < 1 ){
+  if (numberOfMaster < 1 ){
     await onlineRecording.dontSelectMaster()
   }
   else {
@@ -61,7 +61,7 @@ async function selectMaster(numberOfMaster:number){
 }
 
 async function selectTypeOfPayment(type:string){
-  if(type === 'cash' ){
+  if (type === 'cash' ){
     await onlineRecording.selectCashPaymentMethod()
   }
   else if (type === 'seasonTicket') {
@@ -95,7 +95,7 @@ test.beforeEach(async ({ page }) => {
   await onlineRecording.hasText('Онлайн запись')
 })
 test.describe('Online Recording For One Person',() => {
-  test("Online Recording With 1 Service Without Select Master", async ({page})=> {
+  test("Online Recording With 1 Service Without Select Master", async ()=> {
     await onlineRecording.selectSalon(2)
     await selectService(1)
     await onlineRecording.checkPrice(data.priceOf1HourOilMassage)
@@ -106,7 +106,7 @@ test.describe('Online Recording For One Person',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test("Online Recording With 2 Service", async ({page})=> {
+  test("Online Recording With 2 Service", async ()=> {
     await onlineRecording.selectSalon(2)
     await selectService(1)
     await selectService(2)
@@ -117,7 +117,7 @@ test.describe('Online Recording For One Person',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test("Online Recording With 3 Service", async ({page})=> {
+  test("Online Recording With 3 Service", async ()=> {
     await onlineRecording.selectSalon(2)
     await selectService(1)
     await selectService(2)
@@ -129,7 +129,7 @@ test.describe('Online Recording For One Person',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test("Online Recording With 4 Service And 4 Hours", async ({page})=> {
+  test("Online Recording With 4 Service And 4 Hours", async ()=> {
     await onlineRecording.selectSalon(2)
     await selectService(1)
     await selectService(2)
@@ -138,7 +138,7 @@ test.describe('Online Recording For One Person',() => {
     await onlineRecording.error4Hours()
   })
 
-  test("Online Recording With 4 Hours Error And Continue", async ({page})=> {
+  test("Online Recording With 4 Hours Error And Continue", async ()=> {
     await onlineRecording.selectSalon(2)
 
     await selectService(1)
@@ -159,7 +159,7 @@ test.describe('Online Recording For One Person',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test("Online Recording With Change Time For 1.5 Hours", async ({page})=> {
+  test("Online Recording With Change Time For 1.5 Hours", async ()=> {
     await onlineRecording.selectSalon(2)
 
     await onlineRecording.changeTimeOfService(2)
@@ -179,7 +179,7 @@ test.describe('Online Recording For One Person',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test("Online Recording With Change Time For 2 Hours", async ({page})=> {
+  test("Online Recording With Change Time For 2 Hours", async ()=> {
     await onlineRecording.selectSalon(2)
 
     await onlineRecording.changeTimeOfService(3)
@@ -199,7 +199,7 @@ test.describe('Online Recording For One Person',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test.skip("Online Recording With 1 Service With Select Master", async ({page})=> {
+  test.skip("Online Recording With 1 Service With Select Master", async ()=> {
     await onlineRecording.selectSalon(2)
 
     await selectService(1)
@@ -243,7 +243,7 @@ test.describe('Online Recording For One Person',() => {
       await onlineRecording.finalRecordingAndCheck()
     })
 
-      test("Online Recording 3 hours spa-program "+room.name, async ({page})=> {
+      test("Online Recording 3 hours spa-program "+room.name, async ()=> {
         await onlineRecording.selectSalon(2)
 
         await selectService(18)
@@ -281,7 +281,7 @@ test.describe('Online Recording Different Payment Type',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test.skip("Online Recording With SeasonTicket", async ({page})=> {
+  test("Online Recording With SeasonTicket", async ({page})=> {
     await seasonTicket.pageOpening()
     await seasonTicket.selectHours(3,3)
     await seasonTicket.fillData(data.name, data.phoneWithout7and8, data.email)
@@ -298,7 +298,7 @@ test.describe('Online Recording Different Payment Type',() => {
     await onlineRecording.finalRecordingAndCheck()
   })
 
-  test.skip("Online Recording With Certificate", async ({page})=> {
+  test("Online Recording With Certificate", async ({page})=> {
     await certificatePage.open()
     await support.waitSelector('.cart__order-types')
     await certificatePage.selectCertificateType(data.electronicCertificateTypeSelect);

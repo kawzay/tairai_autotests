@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="guru.qa.allure.notifications.clients.skype.SkypeClientTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2024-05-09T13:28:38" hostname="MacBook-Pro.local" time="0.606">
+  <properties/>
+  <testcase name="Get host name from service url: smba.trafficmanager.net/apis/" classname="guru.qa.allure.notifications.clients.skype.SkypeClientTest" time="0.586"/>
+  <testcase name="Get host name from service url: smba.net/apis/" classname="guru.qa.allure.notifications.clients.skype.SkypeClientTest" time="0.004"/>
+  <testcase name="Get host name from service url: smba.trafficmanager.net/" classname="guru.qa.allure.notifications.clients.skype.SkypeClientTest" time="0.003"/>
+  <testcase name="Get host name from service url: smba.trafficmanager.net" classname="guru.qa.allure.notifications.clients.skype.SkypeClientTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

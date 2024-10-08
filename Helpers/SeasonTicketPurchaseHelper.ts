@@ -27,9 +27,9 @@ export class SeasonTicket{
   async selectHours(hour:number,hoursOfSeasonTicket:number){
     if(hour === 3){
       await this.page.click('text ='+hoursOfSeasonTicket+' часа')
-    } else if(hour === 6){
+    } else if(hour === 5){
       await this.page.click('text ='+hoursOfSeasonTicket+' часов')
-    } else if (hour === 18){
+    } else if (hour === 9){
       await this.page.click('text ='+hoursOfSeasonTicket+' часов')
     }
   }

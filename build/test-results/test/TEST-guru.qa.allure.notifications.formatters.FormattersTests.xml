@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="guru.qa.allure.notifications.formatters.FormattersTests" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-05-09T13:28:39" hostname="MacBook-Pro.local" time="0.759">
+  <properties/>
+  <testcase name="shouldFormatDurationUsingCustomFormat()" classname="guru.qa.allure.notifications.formatters.FormattersTests" time="0.752"/>
+  <testcase name="shouldFormatDurationUsingDefaultConfig()" classname="guru.qa.allure.notifications.formatters.FormattersTests" time="0.005"/>
+  <system-out><![CDATA[2024-05-09 18:28:39 DEBUG Formatters:35 - Duration: 45296789 ms
+2024-05-09 18:28:39 DEBUG Formatters:37 - Formatted duration: 12:34:56
+2024-05-09 18:28:39 DEBUG Formatters:35 - Duration: 45296789 ms
+2024-05-09 18:28:39 DEBUG Formatters:37 - Formatted duration: 12:34:56.789
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

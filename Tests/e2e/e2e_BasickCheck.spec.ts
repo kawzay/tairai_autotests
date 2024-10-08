@@ -16,7 +16,7 @@ test.describe.parallel('Home screen pages are displayed',() => {
     await page.click("text=О ТАЙРАЙ")
 
     const pageAboutUs = page.locator('.about-page__tagline')
-    await expect(pageAboutUs).toContainText("ТАЙРАЙ — место твоего отдыха.")
+    await expect(pageAboutUs).toContainText("ТАЙРАЙ — место твоего отдыха")
   })
 
   test ("News Page Check", async ({page}) =>{

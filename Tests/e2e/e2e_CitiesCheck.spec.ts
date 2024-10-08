@@ -1,4 +1,4 @@
-import {test, expect} from '@playwright/test'
+import {test} from '@playwright/test'
 import {CitiesSelectors} from '../../Helpers/CitiesCheckHelpers'
 
 
@@ -13,27 +13,27 @@ test.describe('Checking the opening of other cities',() => {
     await citiesSelectors.pageHasSignUpButton()
   })
 
-  test("Kaliningrad", async ({page}) => {
+  test("Kaliningrad", async () => {
     await citiesSelectors.nameOfCityCheck('Калининград')
   })
 
-  test("Spb", async ({page}) => {
+  test("Spb", async () => {
     await citiesSelectors.nameOfCityCheck('Санкт-Петербург')
   })
 
-  test("Surgut", async ({page}) => {
+  test("Surgut", async () => {
     await citiesSelectors.nameOfCityCheck('Сургут')
   })
 
-  test("Ufa", async ({page}) => {
+  test("Ufa", async () => {
     await citiesSelectors.nameOfCityCheck('Уфа')
   })
 
-  test("Khabarovsk", async ({page}) => {
+  test("Khabarovsk", async () => {
     await citiesSelectors.nameOfCityCheck('Хабаровск')
   })
 
-  test("Chita", async ({page}) => {
+  test("Chita", async () => {
     await citiesSelectors.nameOfCityCheck('Чита')
   })
 })

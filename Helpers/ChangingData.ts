@@ -18,7 +18,7 @@ export class Data{
   textOfSuccessPurchaseOfCert:string = ' Спасибо, оплата прошла успешно! '
 
 
-  hoursOfSeasonTicket:number[] = [3,6,18]
+  hoursOfSeasonTicket:number[] = [3,5,9]
 
   priceOf1HourOilMassage = '4490'
   priceOf1_5HourOilMassage = '6290'

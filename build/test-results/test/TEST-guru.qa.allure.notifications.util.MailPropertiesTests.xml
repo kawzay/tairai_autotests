@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="guru.qa.allure.notifications.util.MailPropertiesTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-05-09T13:28:39" hostname="MacBook-Pro.local" time="0.029">
+  <properties/>
+  <testcase name="shouldCreateMailPropertiesWithoutSecurityProtocolSpecified()" classname="guru.qa.allure.notifications.util.MailPropertiesTests" time="0.003"/>
+  <testcase name="[1] SSL, ssl" classname="guru.qa.allure.notifications.util.MailPropertiesTests" time="0.003"/>
+  <testcase name="[2] STARTTLS, starttls" classname="guru.qa.allure.notifications.util.MailPropertiesTests" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

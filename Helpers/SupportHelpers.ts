@@ -4,12 +4,6 @@ export async function timeout(page: Page,millisecTime:number){
   await page.waitForTimeout(millisecTime)
 }
 
-export async function doNotChooseAnotherCity(page: Page){
-  if(await page.locator('.header-select__tip').isVisible()){
-    await page.click('.header-desktop__top .header-select__tip-option-btn--left')
-  }
-}
-
 export class Support{
   readonly page:Page
 

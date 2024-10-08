@@ -1,6 +1,6 @@
-import { test, expect } from '@playwright/test';
-import { join } from 'path'
-import { readFileSync } from 'fs'
+import { test, expect, Page} from '@playwright/test';
+import {join} from 'path'
+import {readFileSync} from 'fs'
 import {username,password} from '../../Helpers/AuthorizationData'
 
 // Считывание JSON файла с URL

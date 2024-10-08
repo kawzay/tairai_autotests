@@ -1,9 +1,9 @@
-import {test, expect} from '@playwright/test'
-import { baseAuth, putBaseAuth } from '../../Helpers/BasicCheckHelpers'
+import {test} from '@playwright/test'
+import {baseAuth} from '../../Helpers/BasicCheckHelpers'
 import {Payment} from '../../Helpers/TestCardDataAndPaymantData'
 import {Support} from '../../Helpers/SupportHelpers'
 import {CertificatePage} from '../../Helpers/CertificatePurchaseHelpers'
-import { Data } from '../../Helpers/ChangingData'
+import {Data} from '../../Helpers/ChangingData'
 
 test.describe.parallel('Stress Certificate Purchase', () => {
   let payment: Payment
@@ -33,7 +33,7 @@ test.describe.parallel('Stress Certificate Purchase', () => {
       await certificatePage.clickCheckboxAndGoToPayment()
       await payment.testCardDataOfRobokassaPaste()
       await payment.typeOfPurchase(payment.successPayment)
-      await putBaseAuth(page)
+      //await putBaseAuth(page)
       await support.waitSelector('.success-page__title')
       await payment.checkSuccessPurchase(data.textOfSuccessPurchaseOfCert)
     })

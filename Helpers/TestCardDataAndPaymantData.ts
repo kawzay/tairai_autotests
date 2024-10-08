@@ -10,8 +10,8 @@ export class Payment{
   readonly cardHolderValue:string
   readonly submitButton:Locator
   readonly successPaymentText:Locator
-  successPayment = 'btn-secondary'
-  wrongPayment = 'btn-warning'
+  successPayment = 'success'
+  wrongPayment = 'error'
   cash:string = 'cash'
   seasonTicket:string = 'seasonTicket'
   certificate:string = 'certificate'
@@ -28,22 +28,23 @@ export class Payment{
 
     this.cardHolderValue = 'CARDHOLDER'
 
-    this.submitButton = page.locator('.btn-primary')
+    this.submitButton = page.locator('.general-button')
     this.successPaymentText = page.locator('h1')
   }
 
   async testCardDataOfRobokassaPaste(){
     await this.page.fill("[name='EMail']",this.emailValue)
-    await this.page.fill("[name='CardNumber']",this.cardNumberValue)
-    await this.page.fill("[name='ValidTo']",this.validToValue)
-    await this.page.fill("[name='CVC']",this.cvcValue)
-    await this.page.waitForSelector("[name='CardHolder']")
-    await this.page.fill("[name='CardHolder']",this.cardHolderValue)
+    await this.page.fill("[name='cardNumber']",this.cardNumberValue)
+    await this.page.fill("[name='validTo']",this.validToValue)
+    await this.page.fill("[name='cvc']",this.cvcValue)
+    await this.page.waitForSelector("[name='cardholder']")
+    await this.page.fill("[name='cardholder']",this.cardHolderValue)
   }
 
   async typeOfPurchase(purchaseType:string){
     await this.submitButton.click()
-    await this.page.click('.btn.'+purchaseType+'.dialogButton')
+    await this.page.click('.general-button_test-' + purchaseType)
+    await this.page.waitForTimeout(3000)
   }
 
   async checkSuccessPurchase(textOfSuccessPurchase:string){

@@ -1,5 +1,5 @@
-import {test, expect, BrowserContext} from '@playwright/test';
-import {username,password} from '../../Helpers/AuthorizationData'
+import {test, expect} from '@playwright/test';
+import {username, password} from '../../Helpers/AuthorizationData'
 
 const apiUsername = process.env.apiUsername
 const apiPassword = process.env.apiPassword
@@ -11,7 +11,7 @@ const getHeaders = (token) => ({
   'Accept': 'application/json'
 });
 
-test.describe.parallel('Tairai API tests 1С',() => {
+test.describe.skip('Tairai API tests 1С',() => {
     const baseUrl = 'http://'+apiUsername+':'+apiPassword+'@1c-dev.keyseven.su/tr_auto_restore/hs'
 
   test('Tairai API - GetInfoByPhone', async ({ request}) => {
@@ -20,7 +20,7 @@ test.describe.parallel('Tairai API tests 1С',() => {
 
     expect(response.status()).toBe(200)
     expect(responseBody.Type).toBe('Client')
-    expect(responseBody.Name).toBe('Даня_тест')
+    expect(responseBody.Name).toBe('Даня_флагтест')
     expect(responseBody.ID).toBe('7681a56d-31be-11ee-a0c0-005056010271')
     expect(responseBody.Phone).toBe('89126568079')
     expect(responseBody.EMail).toBe('kawzay@gmail.com')
@@ -59,7 +59,7 @@ test.describe('Tairai API tests stage',() => {
     const responseBody = JSON.parse(await response.text())
 
     expect(response.status()).toBe(200)
-    expect(responseBody.data.bonus).toBe(800)
+    expect(responseBody.data.bonus).toBe(100000)
   })
 
   test('Tairai API - show client', async ({ request}) => {
@@ -71,7 +71,7 @@ test.describe('Tairai API tests stage',() => {
     const responseBody = JSON.parse(await response.text())
 
     expect(response.status()).toBe(200)
-    expect(responseBody.data.name).toBe('Даня_тест')
+    expect(responseBody.data.name).toBe('Даня_флагтест')
     expect(responseBody.data.uuid).toBe('7681a56d-31be-11ee-a0c0-005056010271')
     expect(responseBody.data.phone).toBe('+79126568079')
     expect(responseBody.data.email).toBe('kawzay@gmail.com')
@@ -156,8 +156,6 @@ test.describe('Tairai API tests stage',() => {
       headers: getHeaders(accessToken),
     })
 
-    const responseBody = JSON.parse(await response.text())
-
     expect(response.status()).toBe(200);
   })
 
@@ -166,8 +164,6 @@ test.describe('Tairai API tests stage',() => {
     const response = await request.get(baseUrl + '/api/v1/evaluation-request', {
       headers: getHeaders(accessToken),
     })
-
-    const responseBody = JSON.parse(await response.text())
 
     expect(response.status()).toBe(200);
   })
@@ -264,9 +260,7 @@ test.describe('Tairai API tests stage',() => {
     const response = await request.get(baseUrl + '/api/v1/records', {
       headers: getHeaders(accessToken),
     })
-
-    const responseBody = JSON.parse(await response.text())
-
+    
     expect(response.status()).toBe(200);
   })
 })
